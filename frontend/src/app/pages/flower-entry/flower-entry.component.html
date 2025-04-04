@@ -1,0 +1,18 @@
+<h2>Submit Your Flower</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <label>
+    Flower Name:
+    <input formControlName="name" type="text" />
+  </label>
+
+  <label>
+    Cultivation Method:
+    <select formControlName="method">
+      <option value="indoor">Indoor</option>
+      <option value="outdoor">Outdoor</option>
+    </select>
+  </label>
+
+  <button type="submit" [disabled]="form.invalid">Submit Flower</button>
+</form>

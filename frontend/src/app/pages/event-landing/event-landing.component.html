@@ -1,0 +1,21 @@
+<div *ngIf="loading">Loading event info...</div>
+
+<div *ngIf="event && !loading" class="event-container">
+  <h1>{{ event.name }}</h1>
+  <p><strong>Date:</strong> {{ event.date | date }}</p>
+
+  <!-- If not logged in -->
+  <div *ngIf="!isLoggedIn">
+    <p><a routerLink="/login">Login</a> or <a routerLink="/register">Sign up</a> to join this event.</p>
+  </div>
+
+  <!-- If logged in -->
+  <div *ngIf="isLoggedIn">
+    <button (click)="joinEvent()">Join this event</button>
+  </div>
+
+  <!-- Scores (if public) -->
+  <div *ngIf="event.publicScores">
+    <a [routerLink]="['/events', event.slug, 'scores']">🏆 View Results</a>
+  </div>
+</div>

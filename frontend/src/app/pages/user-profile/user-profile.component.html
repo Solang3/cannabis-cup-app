@@ -1,0 +1,21 @@
+<div *ngIf="loading">Loading profile...</div>
+<div *ngIf="!loading && user">
+  <h2>{{ user.username }}</h2>
+  <p><strong>Role:</strong> {{ user.role }}</p>
+  <p *ngIf="user.bio"><strong>Bio:</strong> {{ user.bio }}</p>
+
+  <h3 *ngIf="user.cupsWon?.length">🏆 Cups Won</h3>
+  <ul>
+    <li *ngFor="let cup of user.cupsWon">
+      #{{ cup.placement }} in <a [routerLink]="['/events', cup.event.slug]">{{ cup.event.name }}</a>
+    </li>
+  </ul>
+
+  <h3 *ngIf="entries.length">🌿 Entries</h3>
+  <ul>
+    <li *ngFor="let entry of entries">
+      "{{ entry.name }}" ({{ entry.method }}) → 
+      <a [routerLink]="['/events', entry.event.slug]">{{ entry.event.name }}</a>
+    </li>
+  </ul>
+</div>

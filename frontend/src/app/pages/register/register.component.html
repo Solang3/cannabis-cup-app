@@ -1,0 +1,52 @@
+<h2 class="text-xl font-bold mb-4 text-green-300">Crear cuenta</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()" class="space-y-4 max-w-md">
+
+  <label class="block">
+    Usuario:
+    <input formControlName="username" class="w-full p-2 rounded bg-gray-800 text-white border border-gray-600" />
+  </label>
+
+  <label class="block">
+    Contraseña:
+    <input type="password" formControlName="password" class="w-full p-2 rounded bg-gray-800 text-white border border-gray-600" />
+  </label>
+
+  <label class="block">
+    Nombre:
+    <input formControlName="firstName" class="w-full p-2 rounded bg-gray-800 text-white border border-gray-600" />
+  </label>
+
+  <label class="block">
+    Apellido:
+    <input formControlName="lastName" class="w-full p-2 rounded bg-gray-800 text-white border border-gray-600" />
+  </label>
+
+  <label class="block">
+    Club, marca o compañía:
+    <input formControlName="club" class="w-full p-2 rounded bg-gray-800 text-white border border-gray-600" />
+  </label>
+
+  <label class="block">
+    Foto o logo (URL):
+    <input formControlName="photoUrl" class="w-full p-2 rounded bg-gray-800 text-white border border-gray-600" />
+  </label>
+
+  <label class="block">
+    Bio (¿quién sos?):
+    <textarea formControlName="bio" class="w-full p-2 rounded bg-gray-800 text-white border border-gray-600"></textarea>
+  </label>
+
+  <label>
+    Role:
+    <select formControlName="role">
+      <option *ngFor="let r of roles" [value]="r">{{ r }}</option>
+    </select>
+  </label>
+
+  <button type="submit" class="px-4 py-2 bg-green-600 hover:bg-green-500 text-white rounded">
+    Registrarme
+  </button>
+
+</form>
+

@@ -1,0 +1,72 @@
+<!-- src/app/app.component.html -->
+<div class="min-h-screen bg-gray-900 text-white flex flex-col">
+
+  <!-- ✅ TOP NAVBAR -->
+  <header class="sticky top-0 z-50 bg-green-700 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="text-xl font-bold">🌿 Cannabis Cup</div>
+      <nav class="space-x-4 text-sm hidden md:flex items-center relative">
+
+        <a routerLink="/" class="hover:underline">Inicio</a>
+        <a *ngIf="isAdmin()" routerLink="/admin" class="hover:underline">Admin</a>
+        <a *ngIf="isSponsor()" routerLink="/sponsor-dashboard" class="hover:underline">Sponsor</a>
+
+        <!-- ✅ Usuario logueado -->
+        <div *ngIf="isLoggedIn()" class="relative">
+          <button
+            (click)="toggleMenu()"
+            class="hover:underline focus:outline-none"
+            [attr.aria-expanded]="showMenu"
+          >
+            ☰ {{ username() || 'Usuario' }}
+          </button>
+
+          <div *ngIf="showMenu"
+            class="absolute right-0 mt-2 w-44 bg-gray-800 shadow-lg rounded-md z-50 border border-gray-600"
+            (mouseleave)="showMenu = false"
+          >
+            <a routerLink="/me" class="block px-4 py-2 hover:bg-gray-700">👤 Mi Perfil</a>
+            <a *ngIf="isAdmin()" routerLink="/admin" class="block px-4 py-2 hover:bg-gray-700">🛠 Admin</a>
+            <a *ngIf="isSponsor()" routerLink="/sponsor-dashboard" class="block px-4 py-2 hover:bg-gray-700">🏢 Sponsor</a>
+            <button (click)="logout()" class="block w-full text-left px-4 py-2 hover:bg-gray-700">🚪 Cerrar sesión</button>
+          </div>
+        </div>
+
+        <!-- ✅ No logueado -->
+        <ng-container *ngIf="!isLoggedIn()">
+          <button (click)="loginWithGoogle()" class="btn-google">
+            Ingresar
+          </button>
+          <button (click)="toggleMenu()" class="hover:underline focus:outline-none">
+            ☰ {{ displayName || 'Usuario' }}
+          </button>
+          
+          
+          <a routerLink="/login" class="hover:underline">Login</a>
+          <a routerLink="/register" class="hover:underline">Registrate</a>
+        </ng-container>
+
+      </nav>
+    </div>
+  </header>
+
+  <!-- ✅ MAIN LAYOUT -->
+  <div class="flex flex-1 overflow-hidden">
+
+    <!-- 📎 SIDEBAR -->
+    <aside class="hidden md:block w-64 bg-gray-800 border-r border-gray-700 p-4 overflow-y-auto sticky top-16 h-[calc(100vh-4rem)]">
+      <h2 class="font-semibold text-green-400 mb-2">🌟 Sponsors</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="#" class="text-green-300 hover:underline">Green Leaf Co.</a></li>
+        <li><a href="#" class="text-green-300 hover:underline">Bud Bros</a></li>
+        <li><a href="#" class="text-green-300 hover:underline">Dank Daily</a></li>
+      </ul>
+    </aside>
+
+    <!-- 🧠 MAIN CONTENT -->
+    <main class="flex-1 overflow-y-auto p-6 h-[calc(100vh-4rem)]">
+      <router-outlet></router-outlet>
+    </main>
+
+  </div>
+</div>

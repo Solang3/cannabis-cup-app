@@ -1,0 +1,28 @@
+<h2>Admin: User Approvals</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Display Name</th>
+      <th>Role</th>
+      <th>Approved</th>
+      <th>Actions</th>
+      <th>Profile</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let u of users">
+      <td>{{ u.username }}</td>
+      <td>{{ u.displayName || '—' }}</td>
+      <td>{{ u.role }}</td>
+      <td>{{ u.approved ? '✅' : '❌' }}</td>
+      <td>
+        <button (click)="promote(u._id, 'competitor')">Competitor</button>
+        <button (click)="promote(u._id, 'judge')">Judge</button>
+        <button (click)="promote(u._id, 'admin')">Admin</button>
+      </td>
+      <td><a [routerLink]="['/u', u.username]">🔍</a></td>
+    </tr>
+  </tbody>
+</table>
