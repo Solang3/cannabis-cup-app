@@ -1,0 +1,38 @@
+# 🔐 Environment
+.env
+.env.local
+
+# 📦 Node modules (both frontend and backend)
+**/node_modules/
+
+# 🔥 Build outputs
+frontend/dist/
+frontend/.angular/
+backend/dist/
+
+# 🐞 Logs
+**/npm-debug.log
+**/yarn-debug.log
+**/yarn-error.log
+**/pnpm-debug.log
+
+# 🧪 Coverage / test
+**/coverage/
+**/.nyc_output/
+
+# 💻 IDE / Editor junk
+.vscode/
+.idea/
+.DS_Store
+*.swp
+
+# 🧪 Lint cache
+**/.eslintcache
+
+# 🧪 Angular CLI
+frontend/.angular/cache/
+frontend/.angular/cache-db.json
+frontend/.angular/cache/*
+
+# 🛠 Optional Git hooks
+.husky/
