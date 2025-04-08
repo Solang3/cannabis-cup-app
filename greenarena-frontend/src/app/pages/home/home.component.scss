@@ -1,0 +1,28 @@
+// src/app/pages/home/home.component.scss
+
+:host {
+    display: block;
+    padding: 2rem;
+  }
+  
+  nb-card {
+    text-align: center;
+  
+    h1 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+  
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+  
+    nb-card-footer {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+  }
+  

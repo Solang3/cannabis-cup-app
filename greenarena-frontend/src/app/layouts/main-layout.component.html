@@ -1,0 +1,19 @@
+<!-- src/app/layouts/main-layout.component.html -->
+<nb-layout windowMode>
+    <nb-layout-header fixed>
+      <div class="logo">🌿 GreenArena</div>
+    </nb-layout-header>
+  
+    <nb-sidebar tag="menu-sidebar" state="compacted" fixed>
+      <nb-menu [items]="[
+        { title: 'Inicio', icon: 'home-outline', link: '/' },
+        { title: 'Copas', icon: 'calendar-outline', link: '/events' },
+        { title: 'Login', icon: 'person-outline', link: '/login' }
+      ]"></nb-menu>
+    </nb-sidebar>
+  
+    <nb-layout-column>
+      <router-outlet></router-outlet>
+    </nb-layout-column>
+  </nb-layout>
+  
